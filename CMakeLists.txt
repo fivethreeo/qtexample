@@ -1,0 +1,43 @@
+cmake_minimum_required(VERSION 3.16)
+project(MyProject LANGUAGES C CXX)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_subdirectory(c_lib)
+add_subdirectory(app)
+
+# --- Packaging settings ---
+set(CPACK_MONOLITHIC_INSTALL OFF)
+set(CPACK_COMPONENTS_ALL libmylib libmylib-dev app)
+
+# Component descriptions
+set(CPACK_COMPONENT_LIBMYLIB_DISPLAY_NAME "MyLib Runtime")
+set(CPACK_COMPONENT_LIBMYLIB_DESCRIPTION "Runtime library for MyLib")
+
+set(CPACK_COMPONENT_LIBMYLIB-DEV_DISPLAY_NAME "MyLib Development Files")
+set(CPACK_COMPONENT_LIBMYLIB-DEV_DESCRIPTION "Headers and CMake config for building with MyLib")
+set(CPACK_COMPONENT_LIBMYLIB-DEV_DEPENDS libmylib)
+
+set(CPACK_COMPONENT_APP_DISPLAY_NAME "MyProject GUI App")
+set(CPACK_COMPONENT_APP_DESCRIPTION "Qt6 GUI application using MyLib")
+set(CPACK_COMPONENT_APP_DEPENDS libmylib)
+
+# NSIS for Windows
+if(WIN32)
+    set(CPACK_GENERATOR "NSIS ZIP")
+    set(CPACK_NSIS_DISPLAY_NAME "MyProject Installer")
+    set(CPACK_NSIS_CONTACT "you@example.com")
+    set(CPACK_NSIS_MODIFY_PATH ON)
+endif()
+
+# macOS app bundling handled by macdeployqt
+if(APPLE)
+    set(CPACK_GENERATOR "DragNDrop")
+endif()
+
+include(CPack)

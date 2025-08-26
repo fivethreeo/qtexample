@@ -1,0 +1,84 @@
+name: CI Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qt6-base-dev ninja-build
+      - name: Configure CMake
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build
+      - name: Package with CPack
+        run: cmake --build build --target package
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-packages
+          path: build/*.deb
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Qt6
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: '6.5.*'
+          host: 'windows'
+          target: 'desktop'
+          arch: 'win64_msvc2019_64'
+      - name: Configure CMake
+        run: cmake -S . -B build -G "Ninja" -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build
+      - name: Package with CPack
+        run: cmake --build build --target package
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-packages
+          path: |
+            build/*.zip
+            build/*.exe
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Qt6
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: '6.5.*'
+          host: 'mac'
+          target: 'desktop'
+      - name: Install Ninja
+        run: brew install ninja
+      - name: Configure CMake
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build
+      - name: Deploy Qt frameworks
+        run: |
+          APP_PATH="build/MyQt6App.app"
+          MACDEPLOYQT="\$HOME/Qt/6.5.*/macos/bin/macdeployqt"
+          \$MACDEPLOYQT "\$APP_PATH" -dmg
+      - name: Package with CPack
+        run: cmake --build build --target package
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-packages
+          path: |
+            build/*.dmg
+            build/*.pkg
