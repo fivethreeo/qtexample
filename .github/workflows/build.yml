@@ -28,10 +28,10 @@ jobs:
         run: cmake --build build
       - name: Create AppImage
         run: |
-          wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
-          chmod +x linuxdeployqt-continuous-x86_64.AppImage
-          ./linuxdeployqt-continuous-x86_64.AppImage --appimage-extract
-          ./squashfs-root/AppRun build/app/MyQt6App -appimage -qmake $QT_DIR/bin/qmake
+          # wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+          # chmod +x linuxdeployqt-continuous-x86_64.AppImage
+          # ./linuxdeployqt-continuous-x86_64.AppImage --appimage-extract
+          # ./squashfs-root/AppRun build/app/MyQt6App -appimage -qmake $QT_DIR/bin/qmake
         shell: bash
       - name: Package with CPack
         run: cmake --build build --target package
