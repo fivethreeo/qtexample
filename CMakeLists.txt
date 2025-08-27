@@ -29,7 +29,6 @@ if(WIN32)
     set(CPACK_GENERATOR "NSIS")
     set(CPACK_NSIS_DISPLAY_NAME "MyProject Installer")
     set(CPACK_NSIS_CONTACT "you@example.com")
-    set(CPACK_NSIS_MODIFY_PATH ON)
 endif()
 
 # macOS app bundling handled by macdeployqt
