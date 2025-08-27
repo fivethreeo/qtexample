@@ -45,10 +45,15 @@ jobs:
       
       - name: Build
         run: cmake --build build
+
       - name: Deploy Qt runtime
         shell: pwsh
         run: |
-          & "${{ steps.qt.outputs.qt_bin_dir }}\windeployqt.exe" "build/Release/MyQt6App.exe"
+          $windeployqt = "${{ steps.qt.outputs.qt_bin_dir }}\windeployqt.exe"
+          $exe = "build/Release/MyQt6App.exe"
+          Write-Host "Using windeployqt: $windeployqt"
+          & $windeployqt $exe
+          
       - name: Package with CPack
         run: cmake --build build --config Release --target package
       - name: Upload artifacts
