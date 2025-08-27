@@ -29,7 +29,7 @@ set(CPACK_COMPONENT_APP_DEPENDS libmylib)
 
 # NSIS for Windows
 if(WIN32)
-    set(CPACK_GENERATOR "NSIS ZIP")
+    set(CPACK_GENERATOR "NSIS")
     set(CPACK_NSIS_DISPLAY_NAME "MyProject Installer")
     set(CPACK_NSIS_CONTACT "you@example.com")
     set(CPACK_NSIS_MODIFY_PATH ON)
