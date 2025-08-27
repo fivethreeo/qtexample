@@ -24,13 +24,14 @@ set(CPACK_COMPONENT_MYQT6APP_DISPLAY_NAME "MyProject GUI App")
 set(CPACK_COMPONENT_MYQT6APP_DESCRIPTION "Qt6 GUI application using MyLib")
 set(CPACK_COMPONENT_MYQT6APP_DEPENDS libmylib)
 
-# NSIS for Windows
+# WiX for Windows
 if(WIN32)
-    set(CPACK_MONOLITHIC_INSTALL 1)
-    set(CPACK_GENERATOR "NSIS")
-    set(CPACK_NSIS_DISPLAY_NAME "MyProject Installer")
-    set(CPACK_NSIS_CONTACT "you@example.com")
-    set(CPACK_NSIS_MODIFY_PATHS ON)
+    set(CPACK_GENERATOR "WIX")
+    set(CPACK_WIX_UPGRADE_GUID "BF521FEC-F95C-45AF-B79E-9361049FA388")
+    set(CPACK_PACKAGE_INSTALL_DIRECTORY "MyProject")
+    set(CPACK_WIX_COMPONENT_GROUP_LIBMYLIB "libmylib")
+    set(CPACK_WIX_COMPONENT_GROUP_LIBMYLIB_DEV "libmylib_dev")
+    set(CPACK_WIX_COMPONENT_GROUP_MYQT6APP "myqt6app")
 endif()
 
 # macOS app bundling handled by macdeployqt
