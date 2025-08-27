@@ -10,7 +10,7 @@ add_subdirectory(app)
 
 # --- Packaging settings ---
 set(CPACK_MONOLITHIC_INSTALL OFF)
-set(CPACK_COMPONENTS_ALL libmylib libmylib_dev myqt6app)
+set(CPACK_COMPONENTS_ALL "libmylib" "libmylib_dev" "myqt6app")
 
 # Component descriptions
 set(CPACK_COMPONENT_LIBMYLIB_DISPLAY_NAME "MyLib Runtime")
