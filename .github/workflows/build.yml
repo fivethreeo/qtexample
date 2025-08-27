@@ -45,6 +45,9 @@ jobs:
       
       - name: Build
         run: cmake --build build
+      - name: Deploy Qt runtime
+        run: |
+          "C:/Qt/6.5.3/msvc2019_64/bin/windeployqt.exe" build/Release/MyQt6App.exe
       - name: Install NSIS
         run: choco install nsis -y
       - name: Add NSIS to PATH
