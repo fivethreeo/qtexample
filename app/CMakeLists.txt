@@ -16,7 +16,7 @@ target_link_libraries(MyQt6App PRIVATE Qt6::Core Qt6::Widgets mylib)
 install(TARGETS MyQt6App
     RUNTIME DESTINATION bin
     BUNDLE DESTINATION .
-    COMPONENT app)
+    COMPONENT myqt6app)
 
 # macOS: run macdeployqt
 if(APPLE)

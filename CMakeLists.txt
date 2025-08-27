@@ -10,7 +10,7 @@ add_subdirectory(app)
 
 # --- Packaging settings ---
 set(CPACK_MONOLITHIC_INSTALL OFF)
-set(CPACK_COMPONENTS_ALL libmylib libmylib_dev app)
+set(CPACK_COMPONENTS_ALL libmylib libmylib_dev myqt6app)
 
 # Component descriptions
 set(CPACK_COMPONENT_LIBMYLIB_DISPLAY_NAME "MyLib Runtime")
@@ -20,15 +20,16 @@ set(CPACK_COMPONENT_LIBMYLIB_DEV_DISPLAY_NAME "MyLib Development Files")
 set(CPACK_COMPONENT_LIBMYLIB_DEV_DESCRIPTION "Headers and CMake config for building with MyLib")
 set(CPACK_COMPONENT_LIBMYLIB_DEV_DEPENDS libmylib)
 
-set(CPACK_COMPONENT_APP_DISPLAY_NAME "MyProject GUI App")
-set(CPACK_COMPONENT_APP_DESCRIPTION "Qt6 GUI application using MyLib")
-set(CPACK_COMPONENT_APP_DEPENDS libmylib)
+set(CPACK_COMPONENT_MYQT6APP_DISPLAY_NAME "MyProject GUI App")
+set(CPACK_COMPONENT_MYQT6APP_DESCRIPTION "Qt6 GUI application using MyLib")
+set(CPACK_COMPONENT_MYQT6APP_DEPENDS libmylib)
 
 # NSIS for Windows
 if(WIN32)
     set(CPACK_GENERATOR "NSIS")
     set(CPACK_NSIS_DISPLAY_NAME "MyProject Installer")
     set(CPACK_NSIS_CONTACT "you@example.com")
+    set(CPACK_NSIS_MODIFY_PATHS ON)
 endif()
 
 # macOS app bundling handled by macdeployqt
