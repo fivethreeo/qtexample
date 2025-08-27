@@ -50,7 +50,7 @@ jobs:
         shell: pwsh
         run: |
           $windeployqt = "$env:Qt6_DIR\bin\windeployqt.exe"
-          $exe = "build/Release/MyQt6App.exe"
+          $exe = "build/app/Release/MyQt6App.exe"
           Write-Host "Using windeployqt: $windeployqt"
           & $windeployqt $exe
 
