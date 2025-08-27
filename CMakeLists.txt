@@ -26,6 +26,7 @@ set(CPACK_COMPONENT_MYQT6APP_DEPENDS libmylib)
 
 # NSIS for Windows
 if(WIN32)
+    set(CPACK_MONOLITHIC_INSTALL 1)
     set(CPACK_GENERATOR "NSIS")
     set(CPACK_NSIS_DISPLAY_NAME "MyProject Installer")
     set(CPACK_NSIS_CONTACT "you@example.com")
