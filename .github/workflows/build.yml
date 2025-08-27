@@ -48,7 +48,7 @@ jobs:
       - name: Deploy Qt runtime
         shell: pwsh
         run: |
-          & "$env:QT_DIR\msvc2019_64\bin\windeployqt.exe" "build/Release/MyQt6App.exe"
+          & "${{ steps.qt.outputs.qt_bin_dir }}\windeployqt.exe" "build/Release/MyQt6App.exe"
       - name: Package with CPack
         run: cmake --build build --config Release --target package
       - name: Upload artifacts
