@@ -77,7 +77,7 @@ jobs:
         run: cmake --build build
       - name: Deploy Qt frameworks
         run: |
-          APP_PATH="build/MyQt6App.app"
+          APP_PATH="build/app/MyQt6App.app"
           ls build
           which macdeployqt
           macdeployqt "$APP_PATH" -verbose=1 -dmg
