@@ -10,4 +10,4 @@ install(TARGETS mylib
     RUNTIME DESTINATION bin
     COMPONENT libmylib)
 
-install(FILES mylib.h DESTINATION include COMPONENT libmylib-dev)
+install(FILES mylib.h DESTINATION include COMPONENT libmylib_dev)

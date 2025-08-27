@@ -10,15 +10,15 @@ add_subdirectory(app)
 
 # --- Packaging settings ---
 set(CPACK_MONOLITHIC_INSTALL OFF)
-set(CPACK_COMPONENTS_ALL libmylib libmylib-dev app)
+set(CPACK_COMPONENTS_ALL libmylib libmylib_dev app)
 
 # Component descriptions
 set(CPACK_COMPONENT_LIBMYLIB_DISPLAY_NAME "MyLib Runtime")
 set(CPACK_COMPONENT_LIBMYLIB_DESCRIPTION "Runtime library for MyLib")
 
-set(CPACK_COMPONENT_LIBMYLIB-DEV_DISPLAY_NAME "MyLib Development Files")
-set(CPACK_COMPONENT_LIBMYLIB-DEV_DESCRIPTION "Headers and CMake config for building with MyLib")
-set(CPACK_COMPONENT_LIBMYLIB-DEV_DEPENDS libmylib)
+set(CPACK_COMPONENT_LIBMYLIB_DEV_DISPLAY_NAME "MyLib Development Files")
+set(CPACK_COMPONENT_LIBMYLIB_DEV_DESCRIPTION "Headers and CMake config for building with MyLib")
+set(CPACK_COMPONENT_LIBMYLIB_DEV_DEPENDS libmylib)
 
 set(CPACK_COMPONENT_APP_DISPLAY_NAME "MyProject GUI App")
 set(CPACK_COMPONENT_APP_DESCRIPTION "Qt6 GUI application using MyLib")
