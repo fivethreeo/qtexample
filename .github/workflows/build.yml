@@ -31,7 +31,7 @@ jobs:
           wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
           chmod +x linuxdeployqt-continuous-x86_64.AppImage
           ./linuxdeployqt-continuous-x86_64.AppImage --appimage-extract
-          ./squashfs-root/AppRun build/MyQt6App -appimage
+          ./squashfs-root/AppRun build/app/MyQt6App -appimage
         shell: bash
       - name: Package with CPack
         run: cmake --build build --target package
