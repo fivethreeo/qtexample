@@ -40,4 +40,13 @@ if(APPLE)
     set(CPACK_GENERATOR "DragNDrop")
 endif()
 
+if(UNIX AND NOT APPLE)
+    set(CPACK_GENERATOR "DEB RPM")
+    set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Your Name") # Required
+
+    # Optional dependencies
+    set(CPACK_DEBIAN_LIBMYLIB_PACKAGE_DEPENDS "libc6 (>= 2.31)")
+    set(CPACK_DEBIAN_MYPROJECT_PACKAGE_DEPENDS "libqt6core6 (>= 6.2), libqt6widgets6 (>= 6.2)")
+endif(UNIX AND NOT APPLE)
+
 include(CPack)

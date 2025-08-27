@@ -17,8 +17,8 @@ install(TARGETS MyQt6App
 # macOS: run macdeployqt
 if(APPLE)
     add_custom_command(TARGET MyQt6App POST_BUILD
-        COMMAND \${Qt6_DIR}/../../../bin/macdeployqt
-                "\$<TARGET_BUNDLE_DIR:MyQt6App>"
+        COMMAND ${Qt6_DIR}/../../../bin/macdeployqt
+                "$<TARGET_BUNDLE_DIR:MyQt6App>"
                 -dmg
         COMMENT "Running macdeployqt")
 endif()
@@ -26,7 +26,7 @@ endif()
 # Windows: run windeployqt
 if(WIN32)
     add_custom_command(TARGET MyQt6App POST_BUILD
-        COMMAND \${Qt6_DIR}/../../../bin/windeployqt
-                "\$<TARGET_FILE:MyQt6App>"
+        COMMAND ${Qt6_DIR}/../../../bin/windeployqt
+                "$<TARGET_FILE:MyQt6App>"
         COMMENT "Running windeployqt")
 endif()
