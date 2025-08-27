@@ -76,8 +76,8 @@ jobs:
       - name: Deploy Qt frameworks
         run: |
           APP_PATH="build/MyQt6App.app"
-          MACDEPLOYQT="\$HOME/Qt/6.5.*/macos/bin/macdeployqt"
-          \$MACDEPLOYQT "\$APP_PATH" -dmg
+          MACDEPLOYQT="$HOME/Qt/6.5.*/macos/bin/macdeployqt"
+          $MACDEPLOYQT "$APP_PATH" -dmg
       - name: Package with CPack
         run: cmake --build build --target package
       - name: Upload artifacts
