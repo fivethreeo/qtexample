@@ -40,7 +40,7 @@ if(APPLE)
 endif()
 
 if(UNIX AND NOT APPLE)
-    set(CPACK_GENERATOR "DEB")
+    set(CPACK_GENERATOR "DEB;TGZ")
     set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Your Name") # Required
 
     # Optional dependencies
