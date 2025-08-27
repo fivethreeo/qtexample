@@ -45,6 +45,8 @@ jobs:
       
       - name: Build
         run: cmake --build build
+      - name: Install NSIS
+        run: choco install nsis -y  
       - name: Package with CPack
         run: cmake --build build --target package
       - name: Upload artifacts

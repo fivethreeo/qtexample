@@ -1,6 +1,10 @@
 find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
 
-add_executable(MyQt6App
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
+add_executable(MyQt6App MACOSX_BUNDLE
     main.cpp
     Worker.cpp
     Worker.h
