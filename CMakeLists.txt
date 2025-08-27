@@ -29,6 +29,7 @@ if(WIN32)
     set(CPACK_GENERATOR "NSIS")
     set(CPACK_NSIS_DISPLAY_NAME "MyProject Installer")
     set(CPACK_NSIS_CONTACT "you@example.com")
+    set(CPACK_COMPONENT_MYQT6APP_EXECUTABLE "myqt6app.exe")
     set(CPACK_NSIS_MODIFY_PATHS ON)
 endif()
 
