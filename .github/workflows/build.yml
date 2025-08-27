@@ -76,9 +76,9 @@ jobs:
       - name: Deploy Qt frameworks
         run: |
           APP_PATH="build/MyQt6App.app"
-          QT_BIN=$(ls -d $HOME/Qt/6.*.*/*/bin | head -n 1)
-          echo "Using Qt from $QT_BIN"
-          $QT_BIN/macdeployqt "$APP_PATH" -dmg
+          ls build
+          which macdeployqt
+          macdeployqt "$APP_PATH" -verbose=1 -dmg
       - name: Package with CPack
         run: cmake --build build --target package
       - name: Upload artifacts
