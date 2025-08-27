@@ -36,10 +36,13 @@ jobs:
         with:
           version: '6.5.*'
           host: 'windows'
-          target: 'desktop'
+          target: 'desktop'        
           arch: 'win64_msvc2019_64'
+
+          # Configure CMake using Visual Studio generator
       - name: Configure CMake
-        run: cmake -S . -B build -G "Ninja" -DCMAKE_BUILD_TYPE=Release
+        run: cmake -S . -B build -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=Release
+      
       - name: Build
         run: cmake --build build
       - name: Package with CPack
