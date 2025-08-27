@@ -34,6 +34,7 @@ jobs:
           name: linux-packages
           path: |
             build/*.deb
+            build/*.tar.gz
             build/*.AppImage
 
   build-windows:
