@@ -26,14 +26,6 @@ jobs:
         run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
       - name: Build
         run: cmake --build build
-      - name: Create AppImage
-        if: false
-        run: |
-          wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
-          chmod +x linuxdeployqt-continuous-x86_64.AppImage
-          ./linuxdeployqt-continuous-x86_64.AppImage --appimage-extract
-          ./squashfs-root/AppRun build/app/MyQt6App -appimage -qmake $QT_DIR/bin/qmake
-        shell: bash
       - name: Package with CPack
         run: cmake --build build --target package
       - name: Upload artifacts
@@ -42,7 +34,7 @@ jobs:
           name: linux-packages
           path: |
             build/*.deb
-            MyQt6App-x86_64.AppImage
+            build/*.AppImage
 
   build-windows:
     runs-on: windows-latest
