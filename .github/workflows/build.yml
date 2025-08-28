@@ -115,10 +115,7 @@ jobs:
         with:
           name: windows-packages
           path: |
-            build/*.zip
-            build/*.exe
-            build/_CPack_Packages/win64/NSIS/NSISOutput.log
-            build/CPackOutput.log
+            build/*.msi
 
   build-macos:
     runs-on: macos-latest
