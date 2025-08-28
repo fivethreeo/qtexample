@@ -22,10 +22,42 @@ jobs:
           libxcb1-dev \
           libxkbcommon-x11-dev \
           ninja-build
+
       - name: Configure CMake
         run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
       - name: Build
         run: cmake --build build
+
+        # Create AppDir structure
+      - name: Prepare AppDir
+        run: |
+          mkdir -p AppDir
+          cat > AppDir/MyQt6App.desktop <<EOF
+          [Desktop Entry]
+          Name=MyQt6App
+          Exec=MyQt6App
+          Type=Application
+          EOF
+
+      # Download linuxdeploy
+      - name: Download linuxdeploy
+        run: |
+          wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+          chmod +x linuxdeploy-x86_64.AppImage
+
+      # Bundle AppImage
+      - name: Build AppImage
+        run: |
+          ./linuxdeploy-x86_64.AppImage \
+            --appimage-extract-and-run \
+            --appdir AppDir \
+            --executable build/app/MyQt6App \
+            --library build/c_lib/libmylib.so \
+            --desktop-file AppDir/MyQt6App.desktop \
+            --plugin qt \
+            --output appimage
+
       - name: Package with CPack
         run: cmake --build build --target package
       - name: Upload artifacts

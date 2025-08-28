@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=MyQt6App
-Exec=MyQt6App
-Comment=Qt6 GUI application using MyLib
-Categories=Utility
