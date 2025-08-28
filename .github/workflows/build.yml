@@ -15,6 +15,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
+          qt6-base \
           qt6-base-dev \
           qt6-base-dev-tools \
           qt6-tools-dev-tools \
