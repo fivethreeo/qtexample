@@ -77,7 +77,7 @@ jobs:
           path: |
             build/*.deb
             build/*.tar.gz
-            build/*.AppImage
+            *.AppImage
 
   build-windows:
     runs-on: windows-latest
