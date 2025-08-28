@@ -54,7 +54,7 @@ jobs:
         run: |
           ./linuxdeploy-x86_64.AppImage \
             --appimage-extract
-          cp /usr/lib/qt6/bin/qmake ./squashfs-root/bin/
+          cp /usr/lib/qt6/bin/qmake ./squashfs-root/AppDir/usr/bin/
           ./squashfs-root/AppRun \
             --appdir AppDir \
             --executable build/app/MyQt6App \
