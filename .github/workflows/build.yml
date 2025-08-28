@@ -44,6 +44,7 @@ jobs:
           Exec=MyQt6App
           Type=Application
           Icon=MyQt6App
+          Categories=Utility;
           EOF
 
       # Download linuxdeploy
