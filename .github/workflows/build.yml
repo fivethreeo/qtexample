@@ -25,6 +25,7 @@ jobs:
           libxcb1-dev \
           libxkbcommon-x11-dev \
           ninja-build
+          qtchooser -install qt6 $(which qmake6)
           qmake -v
           qmake -query
 
