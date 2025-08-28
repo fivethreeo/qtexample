@@ -34,12 +34,16 @@ jobs:
         # Create AppDir structure
       - name: Prepare AppDir
         run: |
-          mkdir -p AppDir
+          mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps
+          convert -size 256x256 xc:lightgray -fill black -gravity center \
+            -pointsize 48 -annotate 0 "MyQt6App" \
+            AppDir/usr/share/icons/hicolor/256x256/apps/MyQt6App.png
           cat > AppDir/MyQt6App.desktop <<EOF
           [Desktop Entry]
           Name=MyQt6App
           Exec=MyQt6App
           Type=Application
+          Icon=MyQt6App
           EOF
 
       # Download linuxdeploy
